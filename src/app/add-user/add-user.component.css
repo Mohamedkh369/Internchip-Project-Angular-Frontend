@@ -1,0 +1,13 @@
+mat-form-field{
+  display: block;
+}
+
+.payment-form{
+  width: 500px;
+}
+.container{
+  align-content: center;
+}
+mat-caard{
+  align-self: center;
+}

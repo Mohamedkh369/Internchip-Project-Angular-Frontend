@@ -1,0 +1,51 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="MyDrawer.toggle()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span style="flex:auto;"></span>
+  <button mat-button routerLink="/admin/home">home</button >
+  <button mat-button routerLink="/admin/profile">profile</button >
+  <button mat-button [mat-menu-trigger-for]="importMenu"  ><mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
+    Import</button >
+
+  <button mat-raised-button>   </button >
+
+  <button mat-raised-button  color="accent" (click)="logout()">Logout</button >
+<mat-menu #importMenu>
+  <button mat-menu-item routerLink="/admin/loadStudents">Load Students</button>
+  <button mat-menu-item routerLink="/admin/loadPayments">load Payments</button>
+</mat-menu>
+</mat-toolbar>
+<mat-drawer-container>
+  <mat-drawer #MyDrawer opened="true" mode="side" position="start">
+    <mat-list>
+      <mat-list-item>
+         <button mat-button routerLink="/admin/students"><mat-icon>supervised_user_circle</mat-icon> Students</button>
+      </mat-list-item>
+
+      <mat-list-item>
+          <button mat-button routerLink="/admin/payments"><mat-icon>payment</mat-icon> Payments</button>
+      </mat-list-item>
+
+      <mat-list-item>
+        <button mat-button routerLink="/admin/dashboard"><mat-icon>dashboard</mat-icon> Dashboard</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/users"><mat-icon>supervisor_account</mat-icon> Users</button>
+      </mat-list-item>
+
+    </mat-list>
+
+
+  </mat-drawer>
+  <mat-drawer-content>
+    <div style="min-height: 600px">
+      <router-outlet>
+
+
+      </router-outlet>
+    </div>
+  </mat-drawer-content>
+
+
+</mat-drawer-container>
