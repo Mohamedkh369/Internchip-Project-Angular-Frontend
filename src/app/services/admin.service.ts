@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import {User} from "../model/user";
-import {catchError, firstValueFrom, map, Observable} from "rxjs";
+import {catchError, firstValueFrom, map, Observable, throwError} from "rxjs";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {ActivatedRoute} from "@angular/router";
 import {UpdatedUser} from "../model/UpdatedUser";
+import {Group} from "../model/Group";
+import {Role} from "../model/Role";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,7 @@ export class AdminService {
 
   backendUrl = 'http://localhost:8021/keycloak-api/test';
 
-  constructor(private http: HttpClient , private activatedRoute : ActivatedRoute) {
+  constructor(private http: HttpClient, private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -33,7 +35,7 @@ export class AdminService {
     return this.http.delete<void>(`${this.backendUrl}/delete-user/${id}`);
   }
 
-  editUser(id: string , user:User): Observable<void> {
+  editUser(id: string, user: User): Observable<void> {
     return this.http.put<void>(`${this.backendUrl}/edit-user/${id}`, JSON.stringify(user))
   }
 
@@ -44,7 +46,7 @@ export class AdminService {
       firstName: response.firstName,
       lastName: response.lastName,
       email: response.email,
-      password : response.password
+      password: response.password
     };
   }
 
@@ -58,17 +60,34 @@ export class AdminService {
 
 
   updateUser(id: string, user: User): Observable<void> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.put<void>(`${this.backendUrl}/update-user/${id}`, user,{headers})
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put<void>(`${this.backendUrl}/update-user/${id}`, user, {headers})
   }
-
 
 
   createUser(user: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-     return  this.http.post<any>(`${this.backendUrl}/create`, user, { headers });
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<any>(`${this.backendUrl}/create`, user, {headers});
+  }
+
+  getGroups(): Observable<Group[]> {
+    return this.http.get<Group[]>(`${this.backendUrl}/getGroups`);
+
+  }
+
+  getRoles(): Observable<Role[]> {
+    return this.http.get<Role[]>(`${this.backendUrl}/roles`);
   }
 
 
+  addRole(roleDto: Role): Observable<void> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    return this.http.post<void>(`${this.backendUrl}/createRole`, roleDto, { headers });
+  }
+
+  addGroup( group: string): Observable<string> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<string>(`${this.backendUrl}/createGroup`, group,{headers}).pipe()
+  }
 
 }
