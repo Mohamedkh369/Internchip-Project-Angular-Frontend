@@ -8,7 +8,6 @@
   <button mat-button [mat-menu-trigger-for]="importMenu"  ><mat-icon iconPositionEnd>keyboard_arrow_down</mat-icon>
     Import</button >
 
-  <button mat-raised-button>   </button >
 
   <button mat-raised-button  color="accent" (click)="logout()">Logout</button >
 <mat-menu #importMenu>
@@ -32,6 +31,12 @@
       </mat-list-item>
       <mat-list-item>
         <button mat-button routerLink="/admin/users"><mat-icon>supervisor_account</mat-icon> Users</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/groups"><mat-icon>group</mat-icon> Groups</button>
+      </mat-list-item>
+      <mat-list-item>
+        <button mat-button routerLink="/admin/roles"><mat-icon>badge</mat-icon> Roles</button>
       </mat-list-item>
 
     </mat-list>

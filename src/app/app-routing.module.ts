@@ -17,6 +17,11 @@ import {AlreadyloggedInGuard} from "./guards/alreadylogged-in.guard";
 import {UsersComponent} from "./users/users.component";
 import {EditUserComponent} from "./edit-user/edit-user.component";
 import {AddUserComponent} from "./add-user/add-user.component";
+import {RolesComponent} from "./roles/roles.component";
+import {GroupsComponent} from "./groups/groups.component";
+import {AddRoleComponent} from "./add-role/add-role.component";
+import {AddGroupComponent} from "./add-group/add-group.component";
+import {AssignUserToGroupComponent} from "./assign-user-to-group/assign-user-to-group.component";
 
 
 const routes: Routes = [
@@ -38,6 +43,11 @@ const routes: Routes = [
       {path: 'users', component: UsersComponent},
       {path: 'editUser/:id', component: EditUserComponent},
       {path: 'addUser', component: AddUserComponent},
+      {path: 'roles', component : RolesComponent},
+      {path: 'groups', component: GroupsComponent},
+      {path: 'addRole', component: AddRoleComponent},
+      {path: 'addGroup',component: AddGroupComponent},
+      {path: 'AssignUserToGroup/:groupeName', component: AssignUserToGroupComponent},
 
     ] },
 

@@ -44,6 +44,11 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import { UsersComponent } from './users/users.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { AddUserComponent } from './add-user/add-user.component';
+import { RolesComponent } from './roles/roles.component';
+import { GroupsComponent } from './groups/groups.component';
+import { AddRoleComponent } from './add-role/add-role.component';
+import { AddGroupComponent } from './add-group/add-group.component';
+import { AssignUserToGroupComponent } from './assign-user-to-group/assign-user-to-group.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +68,11 @@ import { AddUserComponent } from './add-user/add-user.component';
     UsersComponent,
     EditUserComponent,
     AddUserComponent,
+    RolesComponent,
+    GroupsComponent,
+    AddRoleComponent,
+    AddGroupComponent,
+    AssignUserToGroupComponent,
   ],
   imports: [
     BrowserModule,

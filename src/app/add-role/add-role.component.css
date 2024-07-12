@@ -1,0 +1,17 @@
+mat-form-field{
+  display: block;
+}
+mat-card-header{
+  padding-bottom: 50px;
+
+}
+
+.payment-form{
+  width: 500px;
+}
+.container{
+  align-content: center;
+}
+mat-caard{
+  align-self: center;
+}
