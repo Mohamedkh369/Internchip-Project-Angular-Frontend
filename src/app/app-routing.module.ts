@@ -47,7 +47,7 @@ const routes: Routes = [
       {path: 'groups', component: GroupsComponent},
       {path: 'addRole', component: AddRoleComponent},
       {path: 'addGroup',component: AddGroupComponent},
-      {path: 'AssignUserToGroup/:groupeName', component: AssignUserToGroupComponent},
+      {path: 'AssignUserToGroup/:groupName', component: AssignUserToGroupComponent},
 
     ] },
 
