@@ -6,6 +6,7 @@ import {ActivatedRoute} from "@angular/router";
 import {UpdatedUser} from "../model/UpdatedUser";
 import {Group} from "../model/Group";
 import {Role} from "../model/Role";
+import {UserToGroup} from "../model/userToGroup";
 
 @Injectable({
   providedIn: 'root'
@@ -88,6 +89,11 @@ export class AdminService {
   addGroup( group: string): Observable<string> {
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post<string>(`${this.backendUrl}/createGroup`, group,{headers}).pipe()
+  }
+  addUserToGroup( userToGroup : UserToGroup ): Observable<void> {
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.put<void>(`${this.backendUrl}/addUserToGroup`, userToGroup, { headers })
+
   }
 
 }

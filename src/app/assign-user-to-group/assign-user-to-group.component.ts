@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Group} from "../model/Group";
 import {AdminService} from "../services/admin.service";
+import {UserToGroup} from "../model/userToGroup";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-assign-user-to-group',
@@ -13,10 +15,10 @@ export class AssignUserToGroupComponent {
 
 
   AssignUserFormGroup!: FormGroup;
-  userToAssign!: string;
-  groupName!:string;
+  userToGroup=new UserToGroup('',this.route.snapshot.params['groupName']);
 
-  constructor(private fb: FormBuilder, private adminService: AdminService) {
+
+  constructor(private fb: FormBuilder, private adminService: AdminService, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
@@ -30,9 +32,16 @@ export class AssignUserToGroupComponent {
     });
   }
 
-
-
   assignUser(){
+  this.userToGroup.username=this.AssignUserFormGroup.value.username;
+    this.adminService.addUserToGroup(this.userToGroup).subscribe({
+      next: value => {
+        console.log(this.userToGroup);
+      },
+      error: error => {
+        console.log(error);
+      }
+    })
 
   }
 
